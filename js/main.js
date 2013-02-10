@@ -55,7 +55,6 @@ function sayThis(str){
 			case "pink"		:
 			case "purple"	:
 			case "violet"	:
-			case "yellow"	:
 			case "black"	:
 			case "white"	: {
 				color(x);
