@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Listener</title>
+	<script src="logic.js">	</script>
+	<link rel="stylesheet" href="style.css" media="all">
+</head>
+<body>
+	<div class="speech-container">
+		<input 
+		    type="text"
+		    id="speech"
+		    onwebkitspeechchange="sayThis(this.value)" 
+		    x-webkit-speech speech
+		/>
+	</div>
+	<h3 id="text"></h2>
+		<div class="box-container">
+			<div id="box"></div>
+		</div>
+</body>
+</html>

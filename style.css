@@ -1,0 +1,42 @@
+body {
+	font-family: helvetica;
+}
+
+#speech {
+	width: 10px;
+	height: 10px;
+	zoom: 4;
+	border-radius: 50%;
+	border: 1px solid #333;
+	background: #eee;
+	position: relative;
+	top: 12px;
+	left: 13px;
+}
+
+#box {
+	width: 100px;
+	height: 100px;
+	background: green;
+	position: relative;
+	-webkit-transition: all .5s;
+	margin: auto;
+}
+
+.box-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -50px;
+}
+
+.speech-container {
+    width: 150px;
+    height:150px;
+    background: rgb(221, 221, 221);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}

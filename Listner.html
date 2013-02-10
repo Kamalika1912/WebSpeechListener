@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Listener</title>
+	<script src="logic.js">	</script>
+	<style>
+		#speech {
+			width: 10px;
+			height: 10px;
+			zoom: 4;
+			border-radius: 50%;
+			border: 1px solid #333;
+			background: #eee;
+			position: relative;
+			top: 12px;
+			left: 13px;
+		}
+
+		#box {
+			width: 100px;
+			height: 100px;
+			background: green;
+			position: relative;
+			-webkit-transition: all .5s;
+			margin: auto;
+		}
+
+		.box-container {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -100px;
+			margin-left: -50px;
+		}
+
+		.speech-container {
+		    width: 150px;
+		    height:150px;
+		    background: rgb(221, 221, 221);
+		    border-radius: 50%;
+		    position: absolute;
+		    bottom: 25px;
+		    right: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="speech-container">
+		<input 
+		    type="text"
+		    id="speech"
+		    onwebkitspeechchange="sayThis(this.value)" 
+		    x-webkit-speech speech
+		/>
+	</div>
+	<h3 id="text"></h2>
+	<div class="box-container">
+		<div id="box"></div>
+	</div>
+
+	<script>
+		(function(){
+			var box = document.getElementById("box");
+		})()
+
+		function color (clr) {
+			box.style.backgroundColor = clr;
+		}
+
+		function move (dir) {
+			switch(dir) {
+				case "right"		: {
+					box.style.left = "50px";
+					break;
+				}
+				case "left"			: {
+					box.style.right = "50px";
+					break;	
+				}
+				case "top"			: {
+					box.style.bottom = "50px";
+					break;
+				}
+				case "bottom"		: {
+					box.style.top = "50px";
+					break;
+				}
+			}
+
+			box.style[dir] = "0px";
+		}
+
+		function shape (shap) {
+			if(shap === "square") {
+				box.style.borderRadius = "0%";
+			}
+
+			else if(shap === "circle") {
+				box.style.borderRadius = "50%";	
+			}
+		}
+
+		function sayThis(str){
+			//document.getElementById("text").innerHTML = "Command: " + str;
+			console.log("Command: " + str);
+			var words = str.split(" ");
+			words.forEach(function(x){
+				switch(x) {
+					case "red"		:
+					case "green"	:
+					case "blue"		:
+					case "yellow"	:
+					case "brown"	:
+					case "orange"	:
+					case "cyan"		:
+					case "gray"		:
+					case "pink"		:
+					case "purple"	:
+					case "violet"	:
+					case "yellow"	:
+					case "black"	:
+					case "white"	: {
+						color(x);
+						break;
+					}
+
+					case "right"	: {
+						move("right");
+						break;
+					}
+					case "left"		: {
+						move("left");
+						break;
+					}
+					
+					case "up"		:
+					case "top"		: {
+						move("top");
+						break;
+					}
+
+					case "down"		:
+					case "bottom"	: {
+						move("bottom");
+						break;
+					}
+
+					case "circle"	:
+					case "circles"	:
+					case "round"	: {
+						shape("circle");
+						break;
+					}
+
+					case "box"		:
+					case "square"	: {
+						shape("square");
+						break;
+					}
+
+					default			: {
+						console.log("Sorry, '" + x + "' was not recognised as a command!");
+					}
+				}
+
+			});
+		}
+	</script>
+</body>
+</html>
