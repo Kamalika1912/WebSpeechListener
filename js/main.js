@@ -7,6 +7,7 @@ function color (clr) {
 }
 
 function move (dir) {
+    box.style[dir] = "0px";
 	switch(dir) {
 		case "right"		: {
 			box.style.left = "50px";
@@ -25,8 +26,6 @@ function move (dir) {
 			break;
 		}
 	}
-
-	box.style[dir] = "0px";
 }
 
 function shape (shap) {
@@ -40,7 +39,7 @@ function shape (shap) {
 }
 
 function sayThis(str){
-	//document.getElementById("text").innerHTML = "Command: " + str;
+    $("p.cmd em").text("\"" + str + "\"");
 	console.log("Command: " + str);
 	var words = str.split(" ");
 	words.forEach(function(x){
@@ -98,7 +97,7 @@ function sayThis(str){
 			}
 
 			default			: {
-				console.log("Sorry, '" + x + "' was not recognised as a command!");
+				console.log("'" + x + "' not recognised!");
 			}
 		}
 
