@@ -13,7 +13,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/speech.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -23,16 +23,14 @@
 
         <!-- Add your site or application content here -->
         <div class="container">
-            <div class="content-wrapper">
-                <div id="box"></div>
-            </div>
             <div class="control-wrapper">
-                <div class="mic">
-                    <input type="text" id="speech" onwebkitspeechchange="sayThis(this.value)" x-webkit-speech speech/>
-                </div>
                 <p class="cmd">
-                    Voice Command: <em>_______________</em>
+                    Speech Transcibed with confidence of <span id="confidence"></span> <br>
+                    Speech transciption: <em>"<span id="result"></span>"</em>
                 </p>
+                <div class="mic">
+                    <button id="speak">Start</button>
+                </div>
             </div>
         </div>
 

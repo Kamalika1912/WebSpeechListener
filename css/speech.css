@@ -121,28 +121,29 @@ body {
     background-image: url(../img/subtle_carbon.png);
     
     position: relative;
-    bottom: 0px;
+    top: 100px;
+    padding-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 2px rgb(0, 0, 0), 0 0 0 4px rgba(255, 255, 255, 0.28) inset;
 }
 
 p.cmd {
     text-align: center;
     
-    color: #ddd;
-    margin-top: -20px;
-    padding-bottom: 20px;
+    color: rgb(175, 175, 175);
 }
 
 #speech {
-	width: 10px;
-	height: 10px;
-	zoom: 4;
-	border-radius: 50%;
-	border: 1px solid #333;
-	background: #eee;
-	position: relative;
-	top: 6px;
-	left: 7px;
-	cursor: pointer;
+    width: 10px;
+    height: 10px;
+    zoom: 4;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background: #eee;
+    position: relative;
+    top: 6px;
+    left: 7px;
+    cursor: pointer;
 }
 
 #speak {
@@ -156,14 +157,14 @@ p.cmd {
 }
 
 #box {
-	margin-top: -50px;
-	margin: auto;
-	width: 100px;
-	height: 100px;
-	background: rgb(0, 128, 128);
-	position: relative;
-	-webkit-transform: translateY(135%);
-	-webkit-transition: all .5s;
+    margin-top: -50px;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background: rgb(0, 128, 128);
+    position: relative;
+    -webkit-transform: translateY(135%);
+    -webkit-transition: all .5s;
 }
 
 .mic {
@@ -172,10 +173,15 @@ p.cmd {
     background: rgb(211, 211, 211);
     border-radius: 50%;
     position: relative;
-    top: -50px;
+    bottom: -50px;
     left: 50%;
     margin-left: -50px;
     box-shadow: 0 0 5px rgb(56, 56, 56), 0 1px 4px white inset;
+}
+
+#confidence, #result {
+    color: #FFFFFF;
+    
 }
 
 

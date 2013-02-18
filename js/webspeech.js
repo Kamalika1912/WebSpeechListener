@@ -1,104 +1,44 @@
-(function(){
-	var box = document.getElementById("box");
-})()
+var speechRecog = new window.webkitSpeechRecognition;
+var recognizing = false;
+var speechResult = '';
 
-function color (clr) {
-	box.style.backgroundColor = clr;
+//console.log("JS test [Running]");
+
+speechRecog.continuous = true;
+speechRecog.interimResults = false;
+
+speechRecog.onstart = function () {
+    $(".mic").css("backgroundColor", "red");
+    $(".mic button").text("Stop");
+    recognizing = true;
 }
 
-function move (dir) {
-    box.style[dir] = "0px";
-	switch(dir) {
-		case "right"		: {
-			box.style.left = "50px";
-			break;
-		}
-		case "left"			: {
-			box.style.right = "50px";
-			break;	
-		}
-		case "top"			: {
-			box.style.bottom = "50px";
-			break;
-		}
-		case "bottom"		: {
-			box.style.top = "50px";
-			break;
-		}
-	}
+speechRecog.onresult = function (event) {
+    speechResult = event.results[0][0].transcript;
+    conf = event.results[0][0].confidence;
+    confidence.innerHTML = conf;
+    result.innerHTML = speechResult;
+    console.log(speechResult);
+    speechRecog.stop();
+    console.log("Stopped recording.");
+    recognizing = false;
 }
 
-function shape (shap) {
-	if(shap === "square") {
-		box.style.borderRadius = "0%";
-	}
-
-	else if(shap === "circle") {
-		box.style.borderRadius = "50%";	
-	}
+speechRecog.onend = function () {
+    $(".mic").css("backgroundColor", "");
+    $(".mic button").text("Start");
 }
 
-function sayThis(str){
-    $("p.cmd em").text("\"" + str + "\"");
-	console.log("Command: " + str);
-	var words = str.split(" ");
-	words.forEach(function(x){
-		switch(x) {
-			case "red"		:
-			case "green"	:
-			case "blue"		:
-			case "yellow"	:
-			case "brown"	:
-			case "orange"	:
-			case "cyan"		:
-			case "gray"		:
-			case "pink"		:
-			case "purple"	:
-			case "violet"	:
-			case "black"	:
-			case "white"	: {
-				color(x);
-				break;
-			}
-
-			case "right"	: {
-				move("right");
-				break;
-			}
-			case "left"		: {
-				move("left");
-				break;
-			}
-			
-			case "up"		:
-			case "top"		: {
-				move("top");
-				break;
-			}
-
-			case "down"		:
-			case "bottom"	: {
-				move("bottom");
-				break;
-			}
-
-			case "circle"	:
-			case "circles"	:
-			case "round"	: {
-				shape("circle");
-				break;
-			}
-
-			case "box"		:
-			case "square"	: {
-				shape("square");
-				break;
-			}
-
-			default			: {
-				console.log("'" + x + "' not recognised!");
-			}
-		}
-
-	});
-}
+$(function () {
+    $(".mic").on("click", function () {
+        if (recognizing) {
+            speechRecog.stop();
+            recognizing = false;
+            console.log("Stopped recording.");
+        }
+        else {
+            speechRecog.start();
+            console.log("Started recording...");
+        }
+    });
+});
